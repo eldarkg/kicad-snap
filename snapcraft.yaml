@@ -1,0 +1,124 @@
+name: kicad-snappy
+version: "4.1.0"
+summary: Electronic schematic and PCB design software
+description: |
+ Kicad is a suite of programs for the creation of printed circuit boards.
+ It includes a schematic editor, a PCB layout tool, support tools and a
+ 3D viewer to display a finished & fully populated PCB.
+ Kicad is made up of 5 main components
+  * kicad - project manager
+  * eeschema - schematic editor
+  * pcbnew - PCB editor
+  * gerbview - GERBER viewer
+  * cvpcb - footprint selector for components
+ Libraries
+  * Both eeschema and pcbnew have library managers and editors for their
+    components and footprints
+  * You can easily create, edit, delete and exchange library items
+  * Documentation files can be associated with components, footprints and key
+    words, allowing a fast search by function
+  * Very large libraries are available for schematic components and footprints
+  * Most components have corresponding 3D models
+confinement: devmode  # use "strict" to enforce system access only via declared interfaces
+
+apps:
+    bitmap2component:
+        command: desktop-launch $SNAP/usr/bin/bitmap2component
+        plugs: [home, mount-observe, unity7, opengl]
+    eeschema:
+        command: desktop-launch $SNAP/usr/bin/eeschema
+        plugs: [home, mount-observe, unity7, opengl]
+    gerbview:
+        command: desktop-launch $SNAP/usr/bin/gerbview
+        plugs: [home, mount-observe, unity7, opengl]
+    kicad:
+        command: desktop-launch $SNAP/usr/bin/kicad
+        plugs: [home, mount-observe, unity7, opengl, network]
+    pcb-calculator:
+        command: desktop-launch $SNAP/usr/bin/pcb_calculator
+        plugs: [home, mount-observe, unity7, opengl]
+    pcbnew:
+        command: desktop-launch $SNAP/usr/bin/pcbnew
+        plugs: [home, mount-observe, unity7, opengl, network]
+    pl-editor:
+        command: desktop-launch $SNAP/usr/bin/pl_editor
+        plugs: [home, mount-observe, unity7, opengl]
+
+parts:
+    kicad:
+        source: lp:kicad
+        plugin: cmake
+        configflags: [-DCMAKE_BUILD_TYPE=Debug,
+                      -DCMAKE_INSTALL_PREFIX=/usr,
+                      -DDEFAULT_INSTALL_PATH=$SNAP/usr,
+                      -DKICAD_SCRIPTING=ON,
+                      -DKICAD_SCRIPTING_MODULES=ON,
+                      -DKICAD_SCRIPTING_WXPYTHON=ON,
+                      -DKICAD_USER_CONFIG_DIR=$SNAP_USER_DATA]
+        build-packages:
+            - build-essential
+            - bzr
+            - bzrtools
+            - grep
+            - libboost-all-dev
+            - libbz2-dev
+            - libcairo2-dev
+            - libcurl4-openssl-dev
+            - libgl1-mesa-dev
+            - libglew-dev
+            - libglm-dev
+            - libglu1-mesa-dev
+            - libssl-dev
+            - libwxbase3.0-dev
+            - libwxgtk-webview3.0-dev
+            - libwxgtk3.0-dev
+            - libx11-dev
+            - mesa-common-dev
+            - pkg-config
+            - python-dev
+            - python-wxgtk3.0
+            - python-wxgtk3.0-dev
+            - swig3.0
+        stage-packages:
+            - python-wxgtk3.0
+            - libpython2.7
+        stage:
+            - -usr/share/pkgconfig/shared-mime-info.pc
+        after: [desktop/gtk2]
+
+    doc:
+        source: https://github.com/KiCad/kicad-doc/archive/master.zip
+        source-subdir: kicad-doc-master
+        plugin: cmake
+        configflags: [-DCMAKE_INSTALL_PREFIX=/usr,
+                      -DBUILD_FORMATS=html]
+        build-packages:
+            - asciidoc
+            - dblatex
+            - docbook-utils
+            - gettext
+            - liblocale-gettext-perl
+            - libunicode-linebreak-perl
+            - libxml2-utils
+            - lmodern
+            - pandoc
+            - po4a
+            - source-highlight
+            - texlive-lang-all
+            - texlive-xetex
+            - ttf-freefont
+            - xmlto
+
+    i18n:
+        source: https://github.com/KiCad/kicad-i18n/archive/master.zip
+        source-subdir: kicad-i18n-master
+        plugin: cmake
+        configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
+        build-packages:
+            - gettext
+
+    library:
+        source: https://github.com/KiCad/kicad-library/archive/master.zip
+        source-subdir: kicad-library-master
+        plugin: cmake
+        configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
