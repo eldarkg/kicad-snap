@@ -33,7 +33,7 @@ apps:
         plugs: [home, locale-control, mount-observe, opengl, unity7]
     kicad:
         command: kicad.wrapper $SNAP/usr/bin/kicad
-        plugs: [home, locale-control, mount-observe, network, opengl, unity7]
+        plugs: [home, locale-control, mount-observe, network, network-bind, opengl, unity7]
     pcb-calculator:
         command: kicad.wrapper $SNAP/usr/bin/pcb_calculator
         plugs: [home, locale-control, mount-observe, opengl, unity7]
