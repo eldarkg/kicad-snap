@@ -23,28 +23,33 @@ confinement: strict
 
 apps:
     bitmap2component:
-        command: desktop-launch $SNAP/usr/bin/bitmap2component
-        plugs: [home, mount-observe, unity7, opengl]
+        command: kicad.wrapper $SNAP/usr/bin/bitmap2component
+        plugs: [home, mount-observe, opengl, unity7]
     eeschema:
-        command: desktop-launch $SNAP/usr/bin/eeschema
-        plugs: [home, mount-observe, unity7, opengl]
+        command: kicad.wrapper $SNAP/usr/bin/eeschema
+        plugs: [home, mount-observe, network, opengl, unity7]
     gerbview:
-        command: desktop-launch $SNAP/usr/bin/gerbview
-        plugs: [home, mount-observe, unity7, opengl]
+        command: kicad.wrapper $SNAP/usr/bin/gerbview
+        plugs: [home, mount-observe, opengl, unity7]
     kicad:
-        command: desktop-launch $SNAP/usr/bin/kicad
-        plugs: [home, mount-observe, unity7, opengl, network]
+        command: kicad.wrapper $SNAP/usr/bin/kicad
+        plugs: [home, mount-observe, network, opengl, unity7]
     pcb-calculator:
-        command: desktop-launch $SNAP/usr/bin/pcb_calculator
-        plugs: [home, mount-observe, unity7, opengl]
+        command: kicad.wrapper $SNAP/usr/bin/pcb_calculator
+        plugs: [home, mount-observe, opengl, unity7]
     pcbnew:
-        command: desktop-launch $SNAP/usr/bin/pcbnew
-        plugs: [home, mount-observe, unity7, opengl, network]
+        command: kicad.wrapper $SNAP/usr/bin/pcbnew
+        plugs: [home, mount-observe, network, opengl, unity7]
     pl-editor:
-        command: desktop-launch $SNAP/usr/bin/pl_editor
-        plugs: [home, mount-observe, unity7, opengl]
+        command: kicad.wrapper $SNAP/usr/bin/pl_editor
+        plugs: [home, mount-observe, opengl, unity7]
 
 parts:
+    wrapper:
+        plugin: copy
+        files:
+            kicad.wrapper: bin/
+
     kicad:
         source: https://launchpad.net/kicad/4.0/4.0.3/+download/kicad-4.0.3.tar.xz
         plugin: cmake
@@ -57,7 +62,7 @@ parts:
                       -DKICAD_SCRIPTING=ON,
                       -DKICAD_SCRIPTING_MODULES=ON,
                       -DKICAD_SCRIPTING_WXPYTHON=ON,
-                      -DKICAD_USER_CONFIG_DIR=$SNAP_USER_DATA]
+                      -DKICAD_USER_CONFIG_DIR=$SNAP_USER_COMMON]
         build-packages:
             - build-essential
             - grep
