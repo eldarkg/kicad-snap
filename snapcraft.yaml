@@ -1,5 +1,5 @@
 name: kicad-snap
-version: "4.1.0"
+version: "4.0.3-snap1"
 summary: Electronic schematic and PCB design software
 description: |
  Kicad is a suite of programs for the creation of printed circuit boards.
@@ -19,7 +19,7 @@ description: |
     words, allowing a fast search by function
   * Very large libraries are available for schematic components and footprints
   * Most components have corresponding 3D models
-confinement: devmode  # use "strict" to enforce system access only via declared interfaces
+confinement: strict
 
 apps:
     bitmap2component:
@@ -46,19 +46,20 @@ apps:
 
 parts:
     kicad:
-        source: lp:kicad
+        source: https://launchpad.net/kicad/4.0/4.0.3/+download/kicad-4.0.3.tar.xz
         plugin: cmake
-        configflags: [-DCMAKE_BUILD_TYPE=Debug,
+        configflags: [-DCMAKE_BUILD_TYPE=Release,
                       -DCMAKE_INSTALL_PREFIX=/usr,
                       -DDEFAULT_INSTALL_PATH=$SNAP/usr,
+                      -DKICAD_SKIP_BOOST=ON,
+                      -DKICAD_BUILD_VERSION=4.0.3,
+                      -DKICAD_REPO_NAME=stable,
                       -DKICAD_SCRIPTING=ON,
                       -DKICAD_SCRIPTING_MODULES=ON,
                       -DKICAD_SCRIPTING_WXPYTHON=ON,
                       -DKICAD_USER_CONFIG_DIR=$SNAP_USER_DATA]
         build-packages:
             - build-essential
-            - bzr
-            - bzrtools
             - grep
             - libboost-all-dev
             - libbz2-dev
@@ -87,8 +88,8 @@ parts:
         after: [desktop/gtk2]
 
     doc:
-        source: https://github.com/KiCad/kicad-doc/archive/master.zip
-        source-subdir: kicad-doc-master
+        source: https://github.com/KiCad/kicad-doc/archive/4.0.3.zip
+        source-subdir: kicad-doc-4.0.3
         plugin: cmake
         configflags: [-DCMAKE_INSTALL_PREFIX=/usr,
                       -DBUILD_FORMATS=html]
@@ -109,16 +110,22 @@ parts:
             - ttf-freefont
             - xmlto
 
+    footprints:
+        source: http://downloads.kicad-pcb.org/libraries/kicad-footprints-4.0.3.tar.gz
+        plugin: copy
+        files:
+            ./*: usr/share/kicad/modules/
+
     i18n:
-        source: https://github.com/KiCad/kicad-i18n/archive/master.zip
-        source-subdir: kicad-i18n-master
+        source: https://github.com/KiCad/kicad-i18n/archive/4.0.3.zip
+        source-subdir: kicad-i18n-4.0.3
         plugin: cmake
         configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
         build-packages:
             - gettext
 
     library:
-        source: https://github.com/KiCad/kicad-library/archive/master.zip
-        source-subdir: kicad-library-master
+        source: https://github.com/KiCad/kicad-library/archive/4.0.3.zip
+        source-subdir: kicad-library-4.0.3
         plugin: cmake
         configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
