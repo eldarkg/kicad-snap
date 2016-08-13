@@ -202,4 +202,9 @@ if [ $needs_update = true ]; then
   done
 fi
 
+# Init global FP library table
+if [ ! -f $HOME/.config/kicad/fp-lib-table ]; then
+  cp $SNAP/usr/share/kicad/template/fp-lib-table.for-pretty $HOME/.config/kicad/fp-lib-table
+fi
+
 exec "$@"
