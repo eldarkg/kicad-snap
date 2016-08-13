@@ -3,6 +3,10 @@
 # make kicad configs to be unversioned
 export HOME="$SNAP_USER_COMMON"
 
+# Set XDG runtime directory
+export XDG_RUNTIME_DIR=/run/shm/snap.$SNAP_NAME.$SNAP_REVISION
+mkdir -p $XDG_RUNTIME_DIR
+
 #######################################################
 # dektop-launch script with $SNAP_USER_{DATA->COMMON} #
 #######################################################
