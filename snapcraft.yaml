@@ -24,31 +24,34 @@ confinement: strict
 apps:
     bitmap2component:
         command: kicad.wrapper $SNAP/usr/bin/bitmap2component
-        plugs: [home, mount-observe, opengl, unity7]
+        plugs: [home, locale-control, mount-observe, opengl, unity7]
     eeschema:
         command: kicad.wrapper $SNAP/usr/bin/eeschema
-        plugs: [home, mount-observe, network, opengl, unity7]
+        plugs: [home, locale-control, mount-observe, network, opengl, unity7]
     gerbview:
         command: kicad.wrapper $SNAP/usr/bin/gerbview
-        plugs: [home, mount-observe, opengl, unity7]
+        plugs: [home, locale-control, mount-observe, opengl, unity7]
     kicad:
         command: kicad.wrapper $SNAP/usr/bin/kicad
-        plugs: [home, mount-observe, network, opengl, unity7]
+        plugs: [home, locale-control, mount-observe, network, opengl, unity7]
     pcb-calculator:
         command: kicad.wrapper $SNAP/usr/bin/pcb_calculator
-        plugs: [home, mount-observe, opengl, unity7]
+        plugs: [home, locale-control, mount-observe, opengl, unity7]
     pcbnew:
         command: kicad.wrapper $SNAP/usr/bin/pcbnew
-        plugs: [home, mount-observe, network, opengl, unity7]
+        plugs: [home, locale-control, mount-observe, network, opengl, unity7]
     pl-editor:
         command: kicad.wrapper $SNAP/usr/bin/pl_editor
-        plugs: [home, mount-observe, opengl, unity7]
+        plugs: [home, locale-control, mount-observe, opengl, unity7]
 
 parts:
     wrapper:
         plugin: copy
         files:
             kicad.wrapper: bin/
+        stage-packages:
+            - locales
+            - libc-bin
 
     kicad:
         source: https://launchpad.net/kicad/4.0/4.0.3/+download/kicad-4.0.3.tar.xz
