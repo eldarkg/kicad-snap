@@ -27,7 +27,7 @@ apps:
         plugs: [home, locale-control, mount-observe, opengl, unity7]
     eeschema:
         command: kicad.wrapper $SNAP/usr/bin/eeschema
-        plugs: [home, locale-control, mount-observe, network, opengl, unity7]
+        plugs: [home, locale-control, mount-observe, network, network-bind, opengl, unity7]
     gerbview:
         command: kicad.wrapper $SNAP/usr/bin/gerbview
         plugs: [home, locale-control, mount-observe, opengl, unity7]
@@ -39,7 +39,7 @@ apps:
         plugs: [home, locale-control, mount-observe, opengl, unity7]
     pcbnew:
         command: kicad.wrapper $SNAP/usr/bin/pcbnew
-        plugs: [home, locale-control, mount-observe, network, opengl, unity7]
+        plugs: [home, locale-control, mount-observe, network, network-bind, opengl, unity7]
     pl-editor:
         command: kicad.wrapper $SNAP/usr/bin/pl_editor
         plugs: [home, locale-control, mount-observe, opengl, unity7]
