@@ -204,6 +204,7 @@ fi
 
 # Init global FP library table
 if [ ! -f $HOME/.config/kicad/fp-lib-table ]; then
+  mkdir -p $HOME/.config/kicad
   cp $SNAP/usr/share/kicad/template/fp-lib-table.for-pretty $HOME/.config/kicad/fp-lib-table
 fi
 
