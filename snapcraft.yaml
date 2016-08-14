@@ -1,5 +1,5 @@
-name: kicad-snap
-version: "4.1.0"
+name: kicad-dev-snap
+version: "4.1.0-snap1"
 summary: Electronic schematic and PCB design software
 description: |
  Kicad is a suite of programs for the creation of printed circuit boards.
@@ -19,7 +19,7 @@ description: |
     words, allowing a fast search by function
   * Very large libraries are available for schematic components and footprints
   * Most components have corresponding 3D models
-confinement: devmode  # use "strict" to enforce system access only via declared interfaces
+confinement: strict
 
 apps:
     bitmap2component:
@@ -48,7 +48,7 @@ parts:
     kicad:
         source: lp:kicad
         plugin: cmake
-        configflags: [-DCMAKE_BUILD_TYPE=Debug,
+        configflags: [-DCMAKE_BUILD_TYPE=Release,
                       -DCMAKE_INSTALL_PREFIX=/usr,
                       -DDEFAULT_INSTALL_PATH=$SNAP/usr,
                       -DKICAD_SCRIPTING=ON,
