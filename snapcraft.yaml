@@ -53,6 +53,16 @@ parts:
             - locales
             - libc-bin
 
+    ngspice:
+        source: http://git.code.sf.net/p/ngspice/ngspice
+        source-type: git
+        plugin: autotools
+        configflags: [--with-ngshared,
+                      --enable-xspice,
+                      --enable-cider,
+                      --enable-openmp,
+                      --prefix=/usr]
+
     kicad:
         source: lp:kicad
         plugin: cmake
@@ -62,6 +72,7 @@ parts:
                       -DKICAD_SCRIPTING=ON,
                       -DKICAD_SCRIPTING_MODULES=ON,
                       -DKICAD_SCRIPTING_WXPYTHON=ON,
+                      -DKICAD_SPICE=ON,
                       -DKICAD_USER_CONFIG_DIR=$SNAP_USER_COMMON]
         build-packages:
             - build-essential
@@ -91,8 +102,9 @@ parts:
             - python-wxgtk3.0
             - libpython2.7
         stage:
+            - -usr/share/doc/fontconfig-config/changelog.Debian.gz
             - -usr/share/pkgconfig/shared-mime-info.pc
-        after: [desktop/gtk2]
+        after: [desktop/gtk2, ngspice]
 
     doc:
         source: https://github.com/KiCad/kicad-doc/archive/master.zip
