@@ -208,4 +208,7 @@ if [ ! -f $HOME/.config/kicad/fp-lib-table ]; then
   cp $SNAP/usr/share/kicad/template/fp-lib-table.for-pretty $HOME/.config/kicad/fp-lib-table
 fi
 
+# Set ngspice library directory
+export SPICE_LIB_DIR=$SNAP/usr/share/ngspice
+
 exec "$@"
