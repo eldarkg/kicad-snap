@@ -62,6 +62,8 @@ parts:
                       --enable-cider,
                       --enable-openmp,
                       --prefix=/usr]
+        build-packages:
+            - bison
         stage:
             - -usr/share/ngspice/scripts/spinit
 
