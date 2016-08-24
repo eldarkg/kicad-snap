@@ -64,6 +64,7 @@ parts:
                       --prefix=/usr]
         build-packages:
             - bison
+            - libbison-dev
         stage:
             - -usr/share/ngspice/scripts/spinit
 
