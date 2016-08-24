@@ -75,7 +75,7 @@ parts:
         after: [ngspice]
 
     kicad:
-        source: lp:kicad
+        source: https://git.launchpad.net/kicad
         plugin: cmake
         configflags: [-DCMAKE_BUILD_TYPE=Release,
                       -DCMAKE_INSTALL_PREFIX=/usr,
@@ -87,8 +87,7 @@ parts:
                       -DKICAD_USER_CONFIG_DIR=$SNAP_USER_COMMON]
         build-packages:
             - build-essential
-            - bzr
-            - bzrtools
+            - git
             - grep
             - libboost-all-dev
             - libbz2-dev
