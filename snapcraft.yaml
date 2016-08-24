@@ -63,8 +63,8 @@ parts:
                       --enable-openmp,
                       --prefix=/usr]
         build-packages:
+            - flex
             - bison
-            - libbison-dev
         stage:
             - -usr/share/ngspice/scripts/spinit
 
