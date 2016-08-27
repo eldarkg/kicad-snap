@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=${SNAP}/meta/gui/gerbview.svg
+Type=Application
+Categories=Development;Electronics;
+Exec=kicad-snap.gerbview %f
+MimeType=application/x-gerber;application/x-excellon
+Name=GerbView Snap
+GenericName=Gerber File Viewer
+GenericName[it]=Visualizzatore file Gerber
+GenericName[ru]=Просмотрщик файлов Gerber
+Comment=View Gerber files
+Comment[it]=Visualizza file in formato Gerber
+Comment[ru]=Просмотр файлов Gerber

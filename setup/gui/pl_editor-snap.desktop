@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=${SNAP}/meta/gui/pl_editor.svg
+Type=Application
+Categories=Development;Electronics;
+Exec=kicad-snap.pl-editor %f
+MimeType=application/x-kicad-pcb;
+Name=PlEditor Snap
+GenericName=Page layout editor
+GenericName[ru]=Редактор макета страницы
+Comment=KiCad page layout edit
+Comment[ru]=Редактирование макета страниц в KiCad

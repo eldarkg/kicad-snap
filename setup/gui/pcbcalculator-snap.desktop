@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=${SNAP}/meta/gui/pcbcalculator.svg
+Type=Application
+Categories=Development;Electronics;
+Exec=kicad-snap.pcb-calculator
+Name=PCB Calculator Snap
+GenericName=PCB Calculator
+GenericName[ru]=Калькулятор печатных плат
+Comment=Calculator for various electronics-related computations
+Comment[it]=Calcolatore per CAD e varie grandezze elettroniche
+Comment[ru]=Калькулятор различных расчетов электроники

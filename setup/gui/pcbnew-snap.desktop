@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=${SNAP}/meta/gui/pcbnew.svg
+Type=Application
+Categories=Development;Electronics;
+Exec=kicad-snap.pcbnew %f
+MimeType=application/x-kicad-pcb;
+Name=Pcbnew Snap (Standalone)
+GenericName=PCB layout
+GenericName[it]=Disegno PCB
+GenericName[ru]=Проектирование печатных плат
+Comment=KiCad printed circuit board layout (standalone)
+Comment[it]=Disegno di circuiti stampati con KiCad (standalone)
+Comment[ru]=Проектирование печатных плат в KiCad (автономный)

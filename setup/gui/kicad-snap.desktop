@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=${SNAP}/meta/gui/kicad.svg
+Type=Application
+Categories=Development;Electronics;
+Exec=kicad-snap.kicad %f
+MimeType=application/x-kicad-project;
+Name=KiCad Snap
+GenericName=EDA Suite
+GenericName[it]=CAD elettronico
+GenericName[ru]=Комплекс EDA
+Comment=Electronic Design Automation suite
+Comment[fr]=Suite logicielle de conception électronique
+Comment[it]=Suite di progettazione circuiti elettronici
+Comment[ru]=Комплекс автоматизации проектирования электроники
+X-Desktop-File-Install-Version=0.22

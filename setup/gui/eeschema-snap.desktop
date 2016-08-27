@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=${SNAP}/meta/gui/eeschema.svg
+Type=Application
+Categories=Development;Electronics;
+Exec=kicad-snap.eeschema %f
+MimeType=application/x-kicad-schematic;
+Name=Eeschema Snap (Standalone)
+GenericName=Electronic schematic capture
+GenericName[fr]=Saisie de schéma électronique
+GenericName[it]=Disegno di schemi elettrici
+GenericName[ru]=Разработка электрических схем
+Comment=KiCad electronic schematic design (standalone)
+Comment[fr]=Dessiner des schémas électroniques (Standalone)
+Comment[it]=Progettazione di schemi elettrici (Standalone)
+Comment[ru]=Разработка электрических схем в KiCad (автономный)

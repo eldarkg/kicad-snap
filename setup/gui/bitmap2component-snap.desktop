@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=${SNAP}/meta/gui/bitmap2component.svg
+Type=Application
+Categories=Development;Electronics;
+Exec=kicad-snap.bitmap2component %f
+Name=Bitmap to Component Converter Snap
+GenericName=Bitmap to Component Converter
+GenericName[it]=Convertitore da bitmap a componente
+GenericName[ru]=Преобразователь изображения в компонент
+Comment=Create a component from a bitmap for use with KiCad
+Comment[it]=Crea un componente KiCad da un'immagine bitmap
+Comment[ru]=Создает компонент из изображения для использования в KiCad
