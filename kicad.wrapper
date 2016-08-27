@@ -24,9 +24,9 @@ if [ ! -e $LOCPATH/$LANG ]; then
   $SNAP/usr/bin/localedef --prefix=$SNAP_USER_COMMON -f $ENC -i $LANG1 $LOCPATH/$LANG
 fi
 
-#######################################################
-# dektop-launch script with $SNAP_USER_{DATA->COMMON} #
-#######################################################
+########################################################
+# desktop-launch script with $SNAP_USER_{DATA->COMMON} #
+########################################################
 
 ###############################################
 # Launcher common exports for any desktop app #
