@@ -49,9 +49,6 @@ parts:
         plugin: copy
         files:
             kicad.wrapper: bin/
-        stage-packages:
-            - locales
-            - libc-bin
 
     kicad:
         source: https://github.com/KiCad/kicad-source-mirror/archive/4.0.4.zip
@@ -92,6 +89,7 @@ parts:
         stage-packages:
             - python-wxgtk3.0
             - libpython2.7
+            - locales-all
         stage:
             - -usr/share/pkgconfig/shared-mime-info.pc
         after: [desktop/gtk2]
