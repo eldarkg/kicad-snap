@@ -46,8 +46,9 @@ apps:
 
 parts:
     wrapper:
-        plugin: copy
-        files:
+        source: .
+        plugin: dump
+        organize:
             kicad.wrapper: bin/
 
     kicad:
