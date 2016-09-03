@@ -25,6 +25,7 @@ needs_update=true
 if [ "$SNAP_DESKTOP_LAST_REVISION" = "$SNAP_REVISION" ]; then
   needs_update=false
 fi
+[ $needs_update = true ] && echo "Updating of KiCad environment. Please wait..."
 [ $needs_update = true ] && echo "SNAP_DESKTOP_LAST_REVISION=$SNAP_REVISION" > ~/.last_revision
 
 if [ "$SNAP_ARCH" == "amd64" ]; then
