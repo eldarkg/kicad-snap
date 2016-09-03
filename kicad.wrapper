@@ -190,15 +190,23 @@ if [ $needs_update = true ]; then
   done
 fi
 
-# Init global FP library table
-if [ ! -f $HOME/.config/kicad/fp-lib-table ]; then
-  mkdir -p $HOME/.config/kicad
-  cp $SNAP/usr/share/kicad/template/fp-lib-table.for-pretty $HOME/.config/kicad/fp-lib-table
-fi
+if [ $needs_update = true ]; then
+  # Init global FP library table
+  if [ ! -f $HOME/.config/kicad/fp-lib-table ]; then
+    mkdir -p $HOME/.config/kicad
+    cp $SNAP/usr/share/kicad/template/fp-lib-table.for-pretty $HOME/.config/kicad/fp-lib-table
+  fi
 
-# Init footprint wizard user plugins directory
-if [ ! -d $HOME/.kicad_plugins ]; then
-  mkdir -p $HOME/.kicad_plugins
+  # Init footprint wizard user plugins directory
+  if [ ! -d $HOME/.kicad_plugins ]; then
+    mkdir -p $HOME/.kicad_plugins
+  fi
+
+  # Update Config Paths
+  if [ -f $HOME/.config/kicad/kicad_common ]; then
+    # template: /snap/{pkg_name}/{version}/path
+    cat $HOME/.config/kicad/kicad_common | sed "s,/snap/[^/]*/[^/]*,$SNAP,g" | tee $HOME/.config/kicad/kicad_common >/dev/null
+  fi
 fi
 
 exec "$@"
