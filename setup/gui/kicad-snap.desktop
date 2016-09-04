@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Terminal=false
-Icon=${SNAP}/meta/gui/kicad.svg
+Icon=${SNAP}/meta/gui/icon.svg
 Type=Application
 Categories=Development;Electronics;
 Exec=kicad-snap.kicad %f
