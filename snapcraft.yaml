@@ -1,5 +1,6 @@
 name: kicad-snap
-version: "4.0.4-snap1"
+version: "4.0.4-snap2"
+grade: stable
 summary: Electronic schematic and PCB design software
 description: |
  Kicad is a suite of programs for the creation of printed circuit boards.
@@ -24,25 +25,25 @@ confinement: strict
 apps:
     bitmap2component:
         command: wrapper $SNAP/usr/bin/bitmap2component
-        plugs: [home, opengl, unity7]
+        plugs: [home, locale-control, opengl, unity7]
     eeschema:
         command: wrapper $SNAP/usr/bin/eeschema
-        plugs: [cups-control, home, network, network-bind, opengl, unity7]
+        plugs: [cups-control, home, locale-control, network, network-bind, opengl, unity7]
     gerbview:
         command: wrapper $SNAP/usr/bin/gerbview
-        plugs: [cups-control, home, opengl, unity7]
+        plugs: [cups-control, home, locale-control, opengl, unity7]
     kicad:
         command: wrapper $SNAP/usr/bin/kicad
-        plugs: [cups-control, home, network, network-bind, opengl, unity7]
+        plugs: [cups-control, home, locale-control, network, network-bind, opengl, unity7]
     pcb-calculator:
         command: wrapper $SNAP/usr/bin/pcb_calculator
-        plugs: [home, opengl, unity7]
+        plugs: [home, locale-control, opengl, unity7]
     pcbnew:
         command: wrapper $SNAP/usr/bin/pcbnew
-        plugs: [cups-control, home, network, network-bind, opengl, unity7]
+        plugs: [cups-control, home, locale-control, network, network-bind, opengl, unity7]
     pl-editor:
         command: wrapper $SNAP/usr/bin/pl_editor
-        plugs: [cups-control, home, opengl, unity7]
+        plugs: [cups-control, home, locale-control, opengl, unity7]
 
 parts:
     wrapper:
@@ -59,7 +60,7 @@ parts:
                       -DCMAKE_INSTALL_PREFIX=/usr,
                       -DDEFAULT_INSTALL_PATH=$SNAP/usr,
                       -DKICAD_SKIP_BOOST=ON,
-                      -DKICAD_BUILD_VERSION=4.0.4-snap1,
+                      -DKICAD_BUILD_VERSION=SNAPCRAFT_PROJECT_VERSION,
                       -DKICAD_REPO_NAME=stable,
                       -DKICAD_SCRIPTING=ON,
                       -DKICAD_SCRIPTING_MODULES=ON,
@@ -90,10 +91,9 @@ parts:
         stage-packages:
             - python-wxgtk3.0
             - libpython2.7
-            - locales-all
         stage:
             - -usr/share/pkgconfig/shared-mime-info.pc
-        after: [desktop/gtk2]
+        after: [desktop-gtk2]
 
     doc:
         source: https://github.com/KiCad/kicad-doc/archive/4.0.4.zip
@@ -120,8 +120,8 @@ parts:
 
     footprints:
         source: http://downloads.kicad-pcb.org/libraries/kicad-footprints-4.0.4.tar.gz
-        plugin: copy
-        files:
+        plugin: dump
+        organize:
             ./*: usr/share/kicad/modules/
 
     i18n:
